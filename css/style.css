@@ -2,7 +2,8 @@
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 
@@ -21,10 +22,11 @@ h1 {
 
 .logo {
     height: 50px;
+    width: auto;
     margin-left: 100px;
 }
 
-.photographer_section {
+.photographer_section, .media_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
