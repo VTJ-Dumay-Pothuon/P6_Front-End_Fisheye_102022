@@ -1,23 +1,28 @@
 function mediaFactory(data) {
-    const { id, photographerId, title, likes } = data;
+    const { id, photographerId, title, likes, date } = data;
 
     function getMediaDOM() {
         // Create DOM elements
         const article = document.createElement( 'article' );
+        article.setAttribute("tabindex", "0");
 
         if (data.video) {
             const media = document.createElement( 'video' );
             media.setAttribute("src", `assets/media/${photographerId}/${data.video}`);
-            media.setAttribute("alt", `Vidéo "${title}", publiée le ${data.date}`);
+            media.setAttribute("alt", `Vidéo "${title}", publiée le ${date}`);
+            article.setAttribute("title", title);
+            article.setAttribute("data-date", date);
             media.setAttribute("data-id", id);
             media.setAttribute("preload", "metadata");
-            media.addEventListener('mouseover', function() { this.controls = true; }, false);
-            media.addEventListener('mouseleave', function() { this.controls = false; }, false);
+            media.addEventListener('mouseover',  function() { this.controls = true  }, false);
+            media.addEventListener('mouseleave', function() { this.controls = false }, false);
             article.appendChild(media);
         } else {
             const media = document.createElement( 'img' );
             media.setAttribute("src", `assets/media/${photographerId}/${data.image}`);
-            media.setAttribute("alt", `Photo "${title}", publiée le ${data.date}`);
+            media.setAttribute("alt", `Photo "${title}", publiée le ${date}`);
+            article.setAttribute("title", title);
+            article.setAttribute("data-date", date);
             media.setAttribute("data-id", id);  
             article.appendChild(media);
         }
@@ -31,12 +36,12 @@ function mediaFactory(data) {
 
         const likesIcon = document.createElement("i");
         likesIcon.setAttribute("class", "far fa-heart");
-        likesIcon.setAttribute("aria-label", "likes");
+        likesIcon.setAttribute("title", "likes");
 
         // The heart icon is only needed for the total likes update
         const totalLikesIcon = document.createElement("i");
         totalLikesIcon.setAttribute("class", "fas fa-heart");
-        totalLikesIcon.setAttribute("aria-label", "likes");
+        totalLikesIcon.setAttribute("title", "likes");
 
         // Add an event listener to the heart icon to update both the media likes and the total likes
         likesIcon.addEventListener("click", function() {

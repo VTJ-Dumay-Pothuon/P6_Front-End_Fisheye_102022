@@ -6,7 +6,7 @@
     position: relative;
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    margin: 0 40px;
     border-radius: 5px;
 }
 
@@ -33,7 +33,7 @@
     color: #525252;
 }
 
-.photograph-header .crop {
+.crop {
     float: right;
     width: 200px;
     height: 200px;
@@ -43,12 +43,13 @@
     border-radius: 50%;
 }
   
-.photograph-header .crop img {
-    width: 340px;
+.crop img {
+    width: 125%;
     object-fit: cover;
     position: absolute;
-    left: -80px;
-    top: -40px;
+    left: 0;
+    top: -20px;
+    height: 125%;
 }
 
 .contact_button {
@@ -119,35 +120,6 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
-}
-
-img, video { 
-    width: 350px;
-    height: 300px;
-    border-radius: 5px;
-}
-
-.media_section article {
-    display: flex;
-    justify-self: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.media_section article img {
-    object-fit: cover;
-}
-
-.media_section article h2 {
-    color: #901C1C;
-    max-width: 300px;
-}
-
-.media_section article data {
-    text-align: right;
-    position: relative;
-    bottom: 46px;
-    font-size: 18px;
 }
 
 .photograph-footer {

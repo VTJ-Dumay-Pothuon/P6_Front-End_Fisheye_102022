@@ -1,0 +1,56 @@
+label {
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.filterbox {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.filterbox select {
+    appearance: none;
+    background-color: #901C1C;
+    color: #FFF;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 40px;
+}
+
+.filterbox i {
+    position: relative;
+    right: 30px;
+    color: #FFF;
+}
+
+img, video { 
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.media_section article {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.media_section article img {
+    object-fit: cover;
+}
+
+.media_section article h2 {
+    color: #901C1C;
+    max-width: 300px;
+}
+
+.media_section article data {
+    text-align: right;
+    position: relative;
+    bottom: 46px;
+    font-size: 18px;
+}

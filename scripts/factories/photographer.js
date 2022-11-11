@@ -12,6 +12,9 @@ function photographerFactory(data) {
         const link = document.createElement("a");
         link.href = `/photographer.html?id=${id}`;
 
+        const crop = document.createElement("div");
+        crop.classList.add("crop");
+
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         img.setAttribute("alt", name);
@@ -33,7 +36,8 @@ function photographerFactory(data) {
 
         // Build and return the DOM
         article.appendChild(link);
-            link.appendChild(img);
+            link.appendChild(crop);
+            crop.appendChild(img);
             link.appendChild(nameData);
         article.appendChild(locationData);
         article.appendChild(taglineData);
