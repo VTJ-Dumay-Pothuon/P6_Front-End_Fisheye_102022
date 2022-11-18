@@ -1,0 +1,74 @@
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 40px 0 50%;
+    width: 100%;
+    background: rgba(196, 196, 196, 0.4)
+}
+
+.lightbox--open {
+    display: block;
+}
+
+.lightbox button {
+    position: absolute;
+    top: 30%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.lightbox .lightbox__button--left {
+    left: 5%;
+}
+
+.lightbox .lightbox__button--right {
+    right: 5%;
+}
+
+.lightbox i {
+    font-size: 50px;
+    color: #901C1C;
+}
+
+.lightbox .lightbox__close-button {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lightbox figure {
+    display: table;
+    margin: auto;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+.lightbox figure img, .lightbox figure video {
+    max-width: 100%;
+    height: 85vh;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+.lightbox__figure--hidden, .lightbox__button--hidden {
+    display: none;
+}
+
+.lightbox figcaption {
+    padding: 4px;
+    margin-top: -4px; 
+    font-size: 24px;
+    background: white;
+    color: #901C1C;  
+}

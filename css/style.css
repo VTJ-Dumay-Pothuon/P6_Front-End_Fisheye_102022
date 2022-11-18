@@ -1,5 +1,6 @@
 @import url("photographer.css");
 @import url("media.css");
+@import url("lightbox.css");
 
 body {
     font-family: "DM Sans", sans-serif;

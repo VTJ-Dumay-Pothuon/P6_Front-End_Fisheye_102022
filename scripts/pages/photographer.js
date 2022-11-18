@@ -40,6 +40,14 @@ async function displayData(media) {
     });
 };
 
+function createLightbox(media) {
+    const lightboxContainer = document.querySelector(".lightbox-container");
+
+    const lightbox = lightboxFactory(media);
+    const lightboxDOM = lightbox.getLightboxDOM();
+    lightboxContainer.appendChild(lightboxDOM);
+}
+
 function sortMedia(media, filter) {
     switch (filter) {
         case "Popularité":
@@ -92,6 +100,9 @@ async function init() {
         chevron.classList.add("fa-chevron-down");
         chevron.classList.remove("fa-chevron-up");
     }, false);
+
+    // Create the lightbox
+    createLightbox(media);
 };
 
 init();

@@ -6,6 +6,14 @@ function mediaFactory(data) {
         const article = document.createElement( 'article' );
         article.setAttribute("tabindex", "0");
 
+        article.addEventListener("click", () => {
+            // Get the media's id from the article's order in DOM. This function is a bit hacky,
+            // but it allows to get the media's sorted order after a filter has been applied.
+            const sorted_id = Array.from(article.parentNode.children).indexOf(article);
+            openLightbox(sorted_id)
+
+        });
+
         if (data.video) {
             const media = document.createElement( 'video' );
             media.setAttribute("src", `assets/media/${photographerId}/${data.video}`);
@@ -14,8 +22,9 @@ function mediaFactory(data) {
             article.setAttribute("data-date", date);
             media.setAttribute("data-id", id);
             media.setAttribute("preload", "metadata");
-            media.addEventListener('mouseover',  function() { this.controls = true  }, false);
-            media.addEventListener('mouseleave', function() { this.controls = false }, false);
+            //media.addEventListener('mouseover',  function() { this.controls = true  }, false);
+            //media.addEventListener('mouseleave', function() { this.controls = false }, false);
+            media.addEventListener('click', function(e) { e.preventDefault(); }, false);
             article.appendChild(media);
         } else {
             const media = document.createElement( 'img' );
@@ -30,6 +39,7 @@ function mediaFactory(data) {
         const nameData = document.createElement( 'h2' );
         nameData.textContent = title;
 
+        likesText = document.createElement( 'p' );
         const likesData = document.createElement("data");
         likesData.setAttribute("value", likes);
         likesData.textContent = `${likes} `;
@@ -54,6 +64,7 @@ function mediaFactory(data) {
                 likesData.setAttribute("value", likes + 1);
                 likesData.textContent = `${likes + 1} `;
                 likesData.appendChild(likesIcon);
+                // likesData.appendChild(likesIcon);
                 // update the total likes
                 likesTotal = document.querySelector(".photograph-footer data")
                 likesTotal.setAttribute("value", parseInt(likesTotal.getAttribute("value")) + 1);
@@ -76,8 +87,9 @@ function mediaFactory(data) {
 
         // Build and return the DOM
         article.appendChild(nameData);
-        article.appendChild(likesData);
-        likesData.appendChild(likesIcon);
+        article.appendChild(likesText);
+        likesText.appendChild(likesData);
+        likesText.appendChild(likesIcon);
         return (article);
     }
     return { getMediaDOM };
