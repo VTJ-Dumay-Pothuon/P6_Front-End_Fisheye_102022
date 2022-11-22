@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="logo de Fisheye" aria-hidden="true" />
+      <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye" aria-hidden="true" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -34,19 +34,19 @@
 				<form>
 					<div>
 						<label for="prenom">Prénom</label>
-						<input  id="prenom" />
+						<input  id="prenom" required />
 					</div>
           <div>
 						<label for="nom">Nom</label>
-						<input  id="nom" />
+						<input  id="nom" required />
 					</div>
           <div>
 						<label for="email">Email</label>
-						<input  id="email" />
+						<input  id="email" required />
 					</div>
           <div>
 						<label   for="message">Votre message</label>
-						<textarea id="message"></textarea>
+						<textarea id="message" required ></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
@@ -54,12 +54,12 @@
 		</aside>
     <aside class="lightbox-container"></aside>
     <footer class="photograph-footer"></footer>
-    <script src="scripts/factories/media.js"></script>
-    <script src="scripts/factories/header_footer.js"></script>
-    <script src="scripts/factories/lightbox.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/lightbox.js"></script>
+    <script src="./scripts/factories/media.js"></script>
+    <script src="./scripts/factories/header_footer.js"></script>
+    <script src="./scripts/factories/lightbox.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/lightbox.js"></script>
     <script src="https://kit.fontawesome.com/325736b578.js" crossorigin="anonymous"></script>
   </body>
 </html>

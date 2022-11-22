@@ -10,7 +10,7 @@ function photographerFactory(data) {
         const article = document.createElement( 'article' );
 
         const link = document.createElement("a");
-        link.href = `/photographer.html?id=${id}`;
+        link.href = `./photographer.html?id=${id}`;
 
         const crop = document.createElement("div");
         crop.classList.add("crop");

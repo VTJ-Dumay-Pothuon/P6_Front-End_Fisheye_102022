@@ -10,10 +10,9 @@ function displayModal() {
 
     // prevent submit button default behavior and close modal instead, for now
     const submitButton = document.querySelector("#contact_modal button");
-    console.log(submitButton);
     submitButton.addEventListener("click", (e) => {
         e.preventDefault();
-        closeModal();
+        submitForm(e);
     });
 
     // prevent the page from scrolling
@@ -38,31 +37,31 @@ function closeModal() {
 
 
 function submitForm(event) {
-    //stop reload page by the submit effect
-    event.preventDefault()
+    //stop page from refreshing when form is submitted
+    event.preventDefault();
 
-    let inputs = document.querySelectorAll('input'),
-        message = document.querySelector('textarea'),
-        data = {};
+    const inputs = document.querySelectorAll('#contact_modal input');
+    const message = document.querySelector('#contact_modal textarea');
 
-    //get all the data from inputs
+
+    let form = {};
     inputs.forEach(input => {
         //get the data
-        data[input.id] = input.value;
+        form[input.id] = input.value;
 
-        //reset the data
-        input.value = ""
+        //clear the input
+        input.value = "";
     })
 
     //get the message from textarea
-    data[message.id] = message.value
+    form[message.id] = message.value
 
-    //reset the data
+    //clear the textarea
     message.value = "";
 
     //show data in console
-    console.log(data)
+    console.log(form);
 
     //hide the modal
-    closeModal()
+    closeModal();
 }

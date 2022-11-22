@@ -2,6 +2,11 @@
 const queryString = window.location.search;
 const id = new URLSearchParams(queryString).get('id');
 
+// If the photographer id is not in the URL, redirect to index.html
+if (!id) {
+    window.location.href = "./index.html";
+}
+
 async function getPhotographer() {
     const response = await fetch("./data/photographers.json");
     if (!response.ok) {
