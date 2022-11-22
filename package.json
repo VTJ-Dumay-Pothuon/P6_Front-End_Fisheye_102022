@@ -1,0 +1,22 @@
+{
+  "name": "p6_front-end_fisheye_102022",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VTJ-Dumay-Pothuon/P6_Front-End_Fisheye_102022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VTJ-Dumay-Pothuon/P6_Front-End_Fisheye_102022/issues"
+  },
+  "homepage": "https://github.com/VTJ-Dumay-Pothuon/P6_Front-End_Fisheye_102022#readme",
+  "devDependencies": {
+    "eslint": "^8.28.0"
+  }
+}
