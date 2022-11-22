@@ -79,7 +79,8 @@ function mediaFactory(data) {
                 likesData.setAttribute("value", likes + 1);
                 likesData.textContent = `${likes + 1} `;
                 likesData.appendChild(likesIcon);
-                // likesData.appendChild(likesIcon);
+                // delete the existing screen-reader-only element in the article, so that the read text is not duplicated
+                try { article.querySelector(".sr-only").remove() } catch {/* do nothing, just delete the error log */}
                 // update the total likes
                 likesTotal = document.querySelector(".photograph-footer data")
                 likesTotal.setAttribute("value", parseInt(likesTotal.getAttribute("value")) + 1);

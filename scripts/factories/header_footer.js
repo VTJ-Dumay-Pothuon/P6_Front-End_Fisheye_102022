@@ -45,7 +45,7 @@ function headerFooterFactory(media, photographer) {
 
         const likesIcon = document.createElement("i");
         likesIcon.setAttribute("class", "fas fa-heart");
-        likesIcon.setAttribute("aria-label", "likes");
+        likesIcon.setAttribute("title", "likes");
 
         
         const pricePerDay = `${photographer.price}€/jour`;
