@@ -5,9 +5,6 @@ function displayModal() {
     artistName.textContent = nameData;
 	modal.style.display = "block";
 
-    // prevent the page from scrolling
-    document.body.style.overflow = "hidden";
-
     // focus on the first input
     document.querySelector("#prenom").focus();
 
@@ -18,6 +15,13 @@ function displayModal() {
         e.preventDefault();
         closeModal();
     });
+
+    // prevent the page from scrolling
+    document.body.style.overflow = "hidden";
+
+    // hide the footer
+    const footer = document.querySelector("footer");
+    footer.classList.add("lightbox--hidden");
 }
 
 function closeModal() {
@@ -26,6 +30,10 @@ function closeModal() {
 
     // allow the page to scroll
     document.body.style.overflow = "auto";
+
+    // show the footer
+    const footer = document.querySelector("footer");
+    footer.classList.remove("lightbox--hidden");
 }
 
 

@@ -6,7 +6,24 @@ function mediaFactory(data) {
         const article = document.createElement( 'article' );
         article.setAttribute("tabindex", "0");
 
-        article.addEventListener("click", () => {
+        
+        let media = document.createElement( 'img' );
+        if (data.video) {
+            media = document.createElement( 'video' );
+            media.setAttribute("src", `assets/media/${photographerId}/${data.video}`);
+            media.setAttribute("alt", `Vidéo "${title}", publiée le ${date}`);
+            media.setAttribute("preload", "metadata");
+            media.addEventListener('click', function(e) { e.preventDefault(); }, false);
+        } else {
+            media.setAttribute("src", `assets/media/${photographerId}/${data.image}`);
+            media.setAttribute("alt", `Photo "${title}", publiée le ${date}`);
+        }
+        Object.freeze(media);
+
+        article.setAttribute("title", title);
+        article.setAttribute("data-date", date);
+        media.setAttribute("data-id", id);
+        media.addEventListener("click", () => {
             // Get the media's id from the article's order in DOM. This function is a bit hacky,
             // but it allows to get the media's sorted order after a filter has been applied.
             const sorted_id = Array.from(article.parentNode.children).indexOf(article);
@@ -14,27 +31,7 @@ function mediaFactory(data) {
 
         });
 
-        if (data.video) {
-            const media = document.createElement( 'video' );
-            media.setAttribute("src", `assets/media/${photographerId}/${data.video}`);
-            media.setAttribute("alt", `Vidéo "${title}", publiée le ${date}`);
-            article.setAttribute("title", title);
-            article.setAttribute("data-date", date);
-            media.setAttribute("data-id", id);
-            media.setAttribute("preload", "metadata");
-            //media.addEventListener('mouseover',  function() { this.controls = true  }, false);
-            //media.addEventListener('mouseleave', function() { this.controls = false }, false);
-            media.addEventListener('click', function(e) { e.preventDefault(); }, false);
-            article.appendChild(media);
-        } else {
-            const media = document.createElement( 'img' );
-            media.setAttribute("src", `assets/media/${photographerId}/${data.image}`);
-            media.setAttribute("alt", `Photo "${title}", publiée le ${date}`);
-            article.setAttribute("title", title);
-            article.setAttribute("data-date", date);
-            media.setAttribute("data-id", id);  
-            article.appendChild(media);
-        }
+        article.appendChild(media);
 
         const nameData = document.createElement( 'h2' );
         nameData.textContent = title;

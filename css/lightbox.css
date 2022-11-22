@@ -14,7 +14,7 @@
 
 .lightbox button {
     position: absolute;
-    top: 30%;
+    top: 25%;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -61,7 +61,7 @@
     object-position: bottom;
 }
 
-.lightbox__figure--hidden, .lightbox__button--hidden {
+.lightbox--hidden {
     display: none;
 }
 

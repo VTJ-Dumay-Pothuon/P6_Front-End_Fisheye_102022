@@ -1,7 +1,6 @@
 // lightbox factory
 // -----------------------------------
-function lightboxFactory(data) {
-    const { title, date } = data;
+function lightboxFactory() {
 
     function getLightboxDOM() {
         // Create DOM elements

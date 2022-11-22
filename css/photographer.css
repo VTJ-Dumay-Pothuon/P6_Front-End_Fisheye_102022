@@ -61,6 +61,9 @@
 }
 
 .modal {
+    overflow: scroll;
+    max-width: 670px;
+    max-height: 80vh;
     border-radius: 5px;
     background-color: #DB8876;
     width: 40%;

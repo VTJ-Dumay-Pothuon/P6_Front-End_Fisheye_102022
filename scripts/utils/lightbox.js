@@ -12,12 +12,12 @@ function openLightbox(id) {
     const video = document.querySelector(".lightbox figure video");
     let media = image;
     if (mediaSrc.tagName === "VIDEO") {
-        image.classList.add("lightbox__figure--hidden");
-        video.classList.remove("lightbox__figure--hidden");
+        image.classList.add("lightbox--hidden");
+        video.classList.remove("lightbox--hidden");
         media = video
     } else {
-        video.classList.add("lightbox__figure--hidden");
-        image.classList.remove("lightbox__figure--hidden");
+        video.classList.add("lightbox--hidden");
+        image.classList.remove("lightbox--hidden");
     }
     Object.freeze(media);
 
@@ -36,18 +36,22 @@ function openLightbox(id) {
     rightButton.setAttribute("onclick", `openLightbox(${id + 1})`);
 
     if (id === 0) {
-        leftButton.classList.add("lightbox__button--hidden");
-        rightButton.classList.remove("lightbox__button--hidden");
+        leftButton.classList.add("lightbox--hidden");
+        rightButton.classList.remove("lightbox--hidden");
     } else if (id === document.querySelectorAll(".media_section img").length) {
-        leftButton.classList.remove("lightbox__button--hidden");
-        rightButton.classList.add("lightbox__button--hidden");
+        leftButton.classList.remove("lightbox--hidden");
+        rightButton.classList.add("lightbox--hidden");
     } else {
-        leftButton.classList.remove("lightbox__button--hidden");
-        rightButton.classList.remove("lightbox__button--hidden");
+        leftButton.classList.remove("lightbox--hidden");
+        rightButton.classList.remove("lightbox--hidden");
     }
 
     // prevent the page from scrolling
     document.body.style.overflow = "hidden";
+
+    // hide the footer
+    const footer = document.querySelector("footer");
+    footer.classList.add("lightbox--hidden");
 }
 
 function closeLightbox() {
@@ -56,4 +60,8 @@ function closeLightbox() {
 
     // allow the page to scroll
     document.body.style.overflow = "auto";
+
+    // show the footer
+    const footer = document.querySelector("footer");
+    footer.classList.remove("lightbox--hidden");
 }

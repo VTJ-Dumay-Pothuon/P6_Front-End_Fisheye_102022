@@ -40,10 +40,10 @@ async function displayData(media) {
     });
 };
 
-function createLightbox(media) {
+function createLightbox() {
     const lightboxContainer = document.querySelector(".lightbox-container");
 
-    const lightbox = lightboxFactory(media);
+    const lightbox = lightboxFactory();
     const lightboxDOM = lightbox.getLightboxDOM();
     lightboxContainer.appendChild(lightboxDOM);
 }
@@ -102,7 +102,7 @@ async function init() {
     }, false);
 
     // Create the lightbox
-    createLightbox(media);
+    createLightbox();
 };
 
 init();
