@@ -38,7 +38,7 @@ async function displayData(media) {
         const mediaDOM = photoModel.getMediaDOM();
         mediaSection.appendChild(mediaDOM);
     });
-};
+}
 
 function createLightbox() {
     const lightboxContainer = document.querySelector(".lightbox-container");
@@ -103,6 +103,6 @@ async function init() {
 
     // Create the lightbox
     createLightbox();
-};
+}
 
 init();

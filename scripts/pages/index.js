@@ -16,12 +16,12 @@ async function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-};
+}
 
 async function init() {
     // Get photographers data from the "API"
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();
