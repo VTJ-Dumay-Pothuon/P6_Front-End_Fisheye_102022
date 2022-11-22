@@ -90,7 +90,7 @@ async function init() {
     // Add a fake chevron onto the filter select to make it look like a custom dropdown
     // but with the native select behavior instead of a custom dropdown with JS
     const chevron = document.createElement("i");
-    chevron.classList.add("fas", "fa-chevron-down");
+    chevron.classList.add("fa-solid", "fa-chevron-down");
     const filterbox = document.querySelector(".filterbox");
     filterbox.appendChild(chevron);
     
@@ -105,6 +105,26 @@ async function init() {
         chevron.classList.add("fa-chevron-down");
         chevron.classList.remove("fa-chevron-up");
     }, false);
+
+
+    // Remove default behavior on spacebar when the filter is focused
+    // if any arrow is pressed, the chevron will be pointing right
+    // and if tab is pressed, the chevron will be pointing down
+    filter.addEventListener("keydown", (e) => {
+        chevron.classList.remove("fa-chevron-down");
+        chevron.classList.remove("fa-chevron-up");
+        if (e.key === " ") {
+            e.preventDefault();
+            chevron.classList.add("fa-arrows-left-right");
+        } else if (e.key === "ArrowDown" || e.key === "ArrowUp" ||
+                   e.key === "ArrowLeft" || e.key === "ArrowRight") {
+            chevron.classList.add("fa-arrows-left-right");
+        } else if (e.key === "Tab") {
+            chevron.classList.remove("fa-arrows-left-right");
+            chevron.classList.add("fa-chevron-down");
+        }
+    });
+
 
     // Create the lightbox
     createLightbox();

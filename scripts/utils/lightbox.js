@@ -46,6 +46,11 @@ function openLightbox(id) {
         rightButton.classList.remove("lightbox--hidden");
     }
 
+    // call checkKey function to the document
+    document.onkeydown = function(e) {
+        checkKey(e, id);
+    };
+
     // prevent the page from scrolling
     document.body.style.overflow = "hidden";
 
@@ -58,10 +63,31 @@ function closeLightbox() {
     const lightbox = document.querySelector(".lightbox");
     lightbox.classList.remove("lightbox--open");
 
+    // disable the keydown event
+    document.onkeydown = null;
+
     // allow the page to scroll
     document.body.style.overflow = "auto";
 
     // show the footer
     const footer = document.querySelector("footer");
     footer.classList.remove("lightbox--hidden");
+}
+
+function checkKey(event, id) {
+
+    e = event || window.event;
+
+    if (e.key === "ArrowLeft" && id > 0) {
+       openLightbox(id - 1)
+    }
+    else if ((e.key === "ArrowRight" || e.key === "Enter") && 
+    id < document.querySelectorAll(".media_section img").length) {
+       openLightbox(id + 1)
+    } else if (e.key === "Escape") {
+        closeLightbox();
+    } else if (e.key === " ") {
+        videoPlay = document.querySelector(".lightbox--open video")
+        videoPlay.focus();
+    }
 }

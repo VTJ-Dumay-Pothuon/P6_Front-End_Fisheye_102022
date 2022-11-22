@@ -13,6 +13,7 @@ function mediaFactory(data) {
             media.setAttribute("src", `assets/media/${photographerId}/${data.video}`);
             media.setAttribute("alt", `Vidéo "${title}", publiée le ${date}`);
             media.setAttribute("preload", "metadata");
+            media.setAttribute('tabindex', '-1');
             media.addEventListener('click', function(e) { e.preventDefault(); }, false);
         } else {
             media.setAttribute("src", `assets/media/${photographerId}/${data.image}`);
@@ -23,13 +24,30 @@ function mediaFactory(data) {
         article.setAttribute("title", title);
         article.setAttribute("data-date", date);
         media.setAttribute("data-id", id);
-        media.addEventListener("click", () => {
-            // Get the media's id from the article's order in DOM. This function is a bit hacky,
-            // but it allows to get the media's sorted order after a filter has been applied.
+        // Get the media's id from the article's order in DOM. This function is a bit hacky,
+        // but it allows to get the media's sorted order after a filter has been applied.
+        media.addEventListener("click", () => { 
             const sorted_id = Array.from(article.parentNode.children).indexOf(article);
-            openLightbox(sorted_id)
-
+            openLightbox(sorted_id);
         });
+        article.onkeydown = function(e) {
+            const sorted_id = Array.from(article.parentNode.children).indexOf(article);
+            if (e.key === "Enter") { 
+                openLightbox(sorted_id);
+            } else if (e.key === "ArrowLeft" && sorted_id > 0) {
+                // simulate a shift+tab keypress to focus the previous media
+                const previousMedia = article.parentNode.children[sorted_id - 1];
+                previousMedia.focus();
+             }
+             else if (e.key === "ArrowRight" && sorted_id < document.querySelectorAll(".media_section img").length) {
+                // simulate a tab keypress to focus the next media
+                const nextMedia = article.parentNode.children[sorted_id + 1];
+                nextMedia.focus();
+                // if key is numpad plus or letter L, increase the likes
+             } else if ((e.key === "+" || e.key === "l")) {
+                article.querySelector("i.fa-heart").click();
+             }
+        }
 
         article.appendChild(media);
 
