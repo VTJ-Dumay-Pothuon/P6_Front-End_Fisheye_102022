@@ -24,6 +24,12 @@
     color: #D3573C;
 }
 
+.photograph-header + label {
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
 .photograph-header data, p {
     position: relative;
     top: -60px;

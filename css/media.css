@@ -17,12 +17,6 @@
     height: 125%;
 }
 
-.photograph-header label {
-    margin-left: 40px;
-    font-weight: bold;
-    font-size: 18px;
-}
-
 .filterbox {
     display: inline-block;
     margin-left: 20px;
