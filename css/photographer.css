@@ -67,7 +67,7 @@
 }
 
 .modal {
-    overflow: scroll;
+    overflow-y: scroll;
     max-width: 670px;
     max-height: 80vh;
     border-radius: 5px;
@@ -80,6 +80,12 @@
     padding: 35px;
     margin: auto;
 }
+
+/* Hide the modal scrollbar for aesthetic purposes */
+/* For Firefox */
+.modal {scrollbar-width: none }
+/* For Chrome, Edge, Safari, and Opera */
+.modal::-webkit-scrollbar { display: none }
 
 .modal header {
     width: 100%;

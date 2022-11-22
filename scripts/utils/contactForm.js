@@ -15,6 +15,13 @@ function displayModal() {
         submitForm(e);
     });
 
+    // purely aesthetic : scrolls to the bottom of the modal when the textarea is focused
+    const message = document.querySelector("#contact_modal textarea");
+    message.addEventListener("focus", () => {
+        const scrollableForm = document.querySelector("#contact_modal .modal");
+        scrollableForm.scrollTo(0, message.scrollHeight + 100);
+    });
+
     // prevent the page from scrolling
     document.body.style.overflow = "hidden";
 
