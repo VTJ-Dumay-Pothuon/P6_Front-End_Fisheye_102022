@@ -26,10 +26,11 @@ function mediaFactory(data) {
         media.setAttribute("data-id", id);
         // Get the media's id from the article's order in DOM. This function is a bit hacky,
         // but it allows to get the media's sorted order after a filter has been applied.
-        media.addEventListener("click", () => { 
-            const sorted_id = Array.from(article.parentNode.children).indexOf(article);
+        media.onclick = function() {
+            const sorted_id = Array.from(article.parentNode.children).indexOf(article); 
             openLightbox(sorted_id);
-        });
+            console.log("Click on media " + sorted_id);
+        };
         article.onkeydown = function(e) {
             const sorted_id = Array.from(article.parentNode.children).indexOf(article);
             if (e.key === "Enter") { 

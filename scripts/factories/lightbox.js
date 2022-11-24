@@ -26,7 +26,7 @@ function lightboxFactory() {
         closeButton.setAttribute("class", "lightbox__close-button");
         closeButton.setAttribute("onclick", "closeLightbox()");
         closeButton.setAttribute("aria-role", "button");
-        closeButton.setAttribute("aria-label", "close lightbox");
+        closeButton.setAttribute("alt", "Fermer la lightbox");
 
         const figure = document.createElement("figure");
         

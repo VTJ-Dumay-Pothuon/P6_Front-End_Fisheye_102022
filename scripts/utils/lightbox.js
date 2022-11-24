@@ -81,7 +81,7 @@ function checkKey(event, id) {
     if (e.key === "ArrowLeft" && id > 0) {
        openLightbox(id - 1)
     }
-    else if ((e.key === "ArrowRight" || e.key === "Enter") && 
+    else if ((e.key === "ArrowRight") && 
     id < document.querySelectorAll(".media_section img").length) {
        openLightbox(id + 1)
     } else if (e.key === "Escape") {
