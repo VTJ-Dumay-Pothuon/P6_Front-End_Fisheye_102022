@@ -123,10 +123,12 @@
 }
 
 .modal form input {
-    width: 100%;
+    width: 98%;
+    padding-left: 2%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 24px;
 }
 
 .modal form textarea {
