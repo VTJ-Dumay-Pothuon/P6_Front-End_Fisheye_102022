@@ -19,9 +19,8 @@ async function getPhotographer() {
 }
 
 async function displayHeaderFooter(media, photographer) {
-    const photographerModel = headerFooterFactory(media, photographer);
-    photographerModel.setHeaderDOM();
-    photographerModel.setFooterDOM();
+    new photographerFactory("header", photographer);
+    new photographerFactory("footer", {media : media, photographer : photographer});
 }
 
 async function getMedias() {
@@ -39,17 +38,14 @@ async function displayData(media) {
     const mediaSection = document.querySelector(".media_section");
 
     media.forEach((photo) => {
-        const photoModel = mediaFactory(photo);
-        const mediaDOM = photoModel.getMediaDOM();
+        const mediaDOM = new photographerFactory("media", photo);
         mediaSection.appendChild(mediaDOM);
     });
 }
 
 function createLightbox() {
     const lightboxContainer = document.querySelector(".lightbox-container");
-
-    const lightbox = lightboxFactory();
-    const lightboxDOM = lightbox.getLightboxDOM();
+    const lightboxDOM = new photographerFactory("lightbox");
     lightboxContainer.appendChild(lightboxDOM);
 }
 

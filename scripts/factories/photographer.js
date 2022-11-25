@@ -1,48 +1,27 @@
-function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price, id } = data;
+class photographerFactory {
+    constructor(type, data = null) {
+// This bit allows us to use the same factory for the lightbox that doesn't need any data
+        if (!data && type !== "lightbox") { throw new Error("No data provided") }
 
-    const picture = `assets/photographers/${portrait}`;
-    const location = `${city}, ${country}`;
-    const pricePerDay = `${price}€/jour`;
+        switch (type) {
+            case "photographer":
+                return getPhotographerDOM(data);
+            case "media":
+                return getMediaDOM(data);
+            case "lightbox":
+                return getLightboxDOM();
 
-    function getUserCardDOM() {
-        // Create DOM elements
-        const article = document.createElement( 'article' );
+// Header and footer are not created by the factory, but directly in the DOM, because their
+// semantic tag already exists in the DOM and we don't want to add a useless level of nesting.
+            case "header":
+                setHeaderDOM(data);
+                break;
+            case "footer":
+                setFooterDOM(data.media, data.photographer);
+                break;
 
-        const link = document.createElement("a");
-        link.href = `./photographer.html?id=${id}`;
-
-        const crop = document.createElement("div");
-        crop.classList.add("crop");
-
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", name);
-
-        const nameData = document.createElement( 'h2' );
-        nameData.textContent = name;
-
-        const locationData = document.createElement("data");
-        locationData.setAttribute("value", location);
-        locationData.textContent = location;
-
-        const taglineData = document.createElement("data");
-        taglineData.setAttribute("value", `slogan de ${name} : ${tagline}`);
-        taglineData.textContent = tagline;
-
-        const priceData = document.createElement("data");
-        priceData.setAttribute("value", price);
-        priceData.textContent = pricePerDay;
-
-        // Build and return the DOM
-        article.appendChild(link);
-            link.appendChild(crop);
-            crop.appendChild(img);
-            link.appendChild(nameData);
-        article.appendChild(locationData);
-        article.appendChild(taglineData);
-        article.appendChild(priceData);
-        return (article);
+            default:
+                throw new Error("No type specified");
+        }
     }
-    return { name, picture, getUserCardDOM }
 }
