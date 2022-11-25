@@ -137,6 +137,7 @@
     resize: vertical;
     border: none;
     border-radius: 5px;
+    font-size: 20px;
 }
 
 .photograph-footer {
