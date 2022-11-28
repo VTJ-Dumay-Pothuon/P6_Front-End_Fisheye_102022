@@ -69,6 +69,14 @@ function sortMedia(media, filter) {
 async function init() {
     // Get photographer's data from the "API"
     const { photographer } = await getPhotographer();
+
+    // Add a screen-reader only title to the media section
+    const mediaSection = document.querySelector(".media_section");
+    const srOnlyTitle = document.createElement("span");
+    srOnlyTitle.setAttribute("class", "sr-only");
+    srOnlyTitle.textContent = `Photos et vidéos de ${photographer.name}`;
+    mediaSection.appendChild(srOnlyTitle);
+    
     // Get photographer's media data from the "API"
     const { media } = await getMedias();
     displayData(media);
