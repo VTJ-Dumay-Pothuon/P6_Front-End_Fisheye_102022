@@ -76,7 +76,7 @@ async function init() {
     srOnlyTitle.setAttribute("class", "sr-only");
     srOnlyTitle.textContent = `Photos et vidéos de ${photographer.name}`;
     mediaSection.appendChild(srOnlyTitle);
-    
+
     // Get photographer's media data from the "API"
     const { media } = await getMedias();
     displayData(media);
@@ -106,6 +106,7 @@ async function init() {
 
     // The chevron is always pointing down when the filter is closed
     filter.addEventListener("focusout", () => {
+        chevron.classList.remove("fa-arrows-left-right");
         chevron.classList.add("fa-chevron-down");
         chevron.classList.remove("fa-chevron-up");
     }, false);
