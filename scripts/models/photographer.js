@@ -1,14 +1,26 @@
+// Pressing arrows while focused on a link will switch focus between links
+function moveBetweenLinks(e) {
+    const links = document.querySelectorAll(".photographer_section a");
+    const currentIndex = Array.from(links).indexOf(e.target);
+    if (e.key === "ArrowLeft") {
+        links[currentIndex - 1].focus();
+    } else if (e.key === "ArrowRight") {
+        links[currentIndex + 1].focus();
+    }
+}
+
 function getPhotographerDOM(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
-
     const picture = `assets/photographers/${portrait}`;
     const location = `${city}, ${country}`;
     const pricePerDay = `${price}€/jour`;
+
     // Create DOM elements
     const article = document.createElement( 'article' );
 
     const link = document.createElement("a");
     link.href = `./photographer.html?id=${id}`;
+    link.onkeydown = moveBetweenLinks;
 
     const crop = document.createElement("div");
     crop.classList.add("crop");
