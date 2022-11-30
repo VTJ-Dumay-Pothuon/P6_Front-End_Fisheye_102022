@@ -2,9 +2,9 @@
 function moveBetweenLinks(e) {
     const links = document.querySelectorAll(".photographer_section a");
     const currentIndex = Array.from(links).indexOf(e.target);
-    if (e.key === "ArrowLeft") {
+    if (e.key === "ArrowLeft" && currentIndex > 0) {
         links[currentIndex - 1].focus();
-    } else if (e.key === "ArrowRight") {
+    } else if (e.key === "ArrowRight" && currentIndex < links.length-1) {
         links[currentIndex + 1].focus();
     }
 }
