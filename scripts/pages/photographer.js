@@ -73,9 +73,10 @@ async function init() {
     // Add a screen-reader only title to the media section
     const mediaSection = document.querySelector(".media_section");
     const srOnlyTitle = document.createElement("span");
+    const main = document.querySelector("main");
     srOnlyTitle.setAttribute("class", "sr-only");
     srOnlyTitle.textContent = `Photos et vidéos de ${photographer.name}`;
-    mediaSection.appendChild(srOnlyTitle);
+    main.insertBefore(srOnlyTitle, mediaSection);
 
     // Get photographer's media data from the "API"
     const { media } = await getMedias();
